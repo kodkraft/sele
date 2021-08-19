@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -25,5 +26,12 @@ class DatabaseSeeder extends Seeder
                             ->create();
                     });
             });
+        $categories = Category::all();
+
+        Product::factory(50, [
+            'category_id' => function () use ($categories) {
+                return $categories->random()->id;
+            }
+        ])->create();
     }
 }
