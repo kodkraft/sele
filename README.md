@@ -16,7 +16,7 @@ cd /var/www/
 ```
 ##### Clone project to your local
 ```bash
-git clone git@github.com:cengizonkal/sele.git
+git clone git@github.com:kodkraft/sele.git
 ```
 ##### Change your working directory
 ```bash
