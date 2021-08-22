@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
         Category::factory(3)
             ->create()
             ->each(function ($category) {
-                Category::factory(3, ['category_id' => $category->id])
+                Category::factory(3, ['parent_id' => $category->id])
                     ->create()->each(function ($category) {
-                        Category::factory(3, ['category_id' => $category->id])
+                        Category::factory(3, ['parent_id' => $category->id])
                             ->create();
                     });
             });
