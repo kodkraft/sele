@@ -22,7 +22,9 @@ class OrderStatusFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'sort' => $this->faker->numberBetween(1, 10),
+            'description' => $this->faker->paragraph,
+            'name' => $this->faker->word,
         ];
     }
 }

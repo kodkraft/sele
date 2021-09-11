@@ -22,7 +22,8 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'shipping_address' => $this->faker->address,
+            'billing_address' => $this->faker->address
         ];
     }
 }
