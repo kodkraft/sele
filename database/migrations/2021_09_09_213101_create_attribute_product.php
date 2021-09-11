@@ -13,13 +13,13 @@ class CreateAttributeProduct extends Migration
      */
     public function up()
     {
-        Schema::create('attribute_product', function (Blueprint $table) {
+        Schema::create('product_property', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('attribute_id')->constrained();
+            $table->foreignId('property_id')->constrained();
             $table->foreignId('product_id')->constrained();
             $table->string('value')->nullable();
 
-            $table->unique(['attribute_id', 'product_id']);
+            $table->unique(['property_id', 'product_id']);
 
             $table->timestamps();
         });
