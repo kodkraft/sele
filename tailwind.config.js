@@ -1,7 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-    mode: 'jit',
+    // mode: 'jit',
     purge: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
@@ -14,6 +14,16 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+        },
+    },
+
+    variants: {
+        extend: {
+            backgroundColor: ['even', 'odd'],
+            opacity: ['disabled'],
+            divideColor: ['group-hover'],
+            display: ["group-hover"],
+            hover: ['gap']
         },
     },
 
