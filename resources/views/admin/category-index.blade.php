@@ -1,14 +1,16 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+@extends('layouts.app')
 
-            </div>
+@section('content')
+    <h1>Categories</h1>
+    <div class="flex justify-center bg-gray-100 py-10 p-14">
+        <!---== First Stats Container ====--->
+        <div class="grid grid-cols-4 ">
+
+                @foreach($categories as $category)
+                    @livewire('show-category', ['category' => $category])
+                @endforeach
+
         </div>
     </div>
-</x-app-layout>
+
+@endsection
