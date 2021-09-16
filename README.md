@@ -1,3 +1,4 @@
+![Build](https://github.com/kodkraft/sele/workflows/Build/badge.svg)
 # Sele
 Sele is a free open source ecommerce platform build with laravel for online merchants. 
 
