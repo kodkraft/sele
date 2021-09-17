@@ -6,7 +6,7 @@
             @if($create)
                 @lang('category.show-categories')
             @else
-                @lang('category.save')
+                @lang('category.create')
             @endif
         </button>
     </div>
