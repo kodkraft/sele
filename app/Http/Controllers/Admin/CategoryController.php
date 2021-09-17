@@ -26,15 +26,12 @@ class CategoryController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->fill($request->toArray())->save();
+        return redirect()->back();
     }
 
     /**
