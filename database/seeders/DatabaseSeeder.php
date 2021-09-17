@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $admin = User::factory(1, ['email' => 'onkal.cengiz@gmail.com'])->create();
         $admin2 = User::factory(1,['email' => 'test@gmail.com'])->create();
 
+        $admin = User::factory(1, ['email' => 'admin@sele.com'])->create();
         Category::factory(3)
             ->create()
             ->each(function ($category) {
