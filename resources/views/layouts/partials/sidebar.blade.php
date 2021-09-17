@@ -22,8 +22,8 @@
 
     <div class="mt-2 border-t border-white">
         @include('common.menu-link',['title' => trans('app.catalog'),'subItems' => [
-          generateLink('app.catalog-sub.categories',route('admin.categories'))
-        ]])
+          generateLink('app.catalog-sub.categories',route('category.index'))
+        ], 'isActive' => isActiveRouteByName('category')])
 
     </div>
 </aside>

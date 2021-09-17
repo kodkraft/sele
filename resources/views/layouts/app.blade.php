@@ -17,6 +17,7 @@
     </div>
 </div>
 <script src="{{ asset('js/alpine.js') }}" defer></script>
+@stack('js')
 <script>
     // grab everything we need
     const btn = document.querySelector(".mobile-menu-button");

@@ -3,6 +3,6 @@
 return [
     'catalog' => 'Catalog',
     'catalog-sub' => [
-        'categories' => 'Categories'
+        'categories' => 'Categories',
     ]
 ];
