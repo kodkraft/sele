@@ -16,14 +16,12 @@ class CategoryController extends Controller
             ->with('categories', $categories);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin/category-create')
+            ->with('categories', $categories);
     }
 
 
