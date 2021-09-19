@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UpdateCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -30,51 +31,36 @@ class CategoryController extends Controller
     {
         $category = new Category();
         $category->fill($request->toArray())->save();
-        $message = $category->title . ' created';
-        Log::info($message);
-
+        Log::info($message = $category->title . ' created');
         return redirect()->back()->with('success', $message);
-
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Category $category
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Category $category)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Category $category
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Category $category)
     {
-        //
+        $categories = Category::with('ancestors')->get();
+        return view('admin/category-edit')
+            ->with('categories', $categories)
+            ->with('category', $category);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Category $category
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Category $category)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $category->fill($request->toArray())->save();
+        Log::info($message = $category->title . ' updated');
+        return redirect()->back()->with('success', $message);
     }
-
 
     public function destroy(Category $category)
     {
+        Log::info($message = $category->title . ' deleted');
         $category->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', $message);
     }
 }
