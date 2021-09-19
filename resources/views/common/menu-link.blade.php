@@ -1,4 +1,4 @@
-<div x-data="{open: {{ $isActive ?? false }} }" class="flex flex-col">
+<div x-data="{open: {{ $isActive ? 'true' : 'false' }} }" class="flex flex-col">
     <span
         class="flex flex-row items-center justify-between py-2.5 px-4 rounded cursor-pointer gap-2 transition duration-200"
         :class="open != true ? 'hover:text-white hover:bg-gray-700' : 'text-white bg-gray-700'"
