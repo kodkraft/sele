@@ -17,8 +17,9 @@
         @yield('content')
     </div>
 </div>
-<script src="{{ asset('js/app.js') }}"></script>
+
 @stack('js')
+<script src="{{ asset('js/app.js') }}"></script>
 <script>
     // grab everything we need
     const btn = document.querySelector(".mobile-menu-button");
