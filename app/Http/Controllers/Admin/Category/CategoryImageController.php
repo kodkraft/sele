@@ -12,16 +12,16 @@ class CategoryImageController extends Controller
 {
     public function index(Category $category)
     {
-        return view('admin/category/image_index')
+        return view('admin/category/category_image_index')
             ->with('category', $category);
     }
 
     public function store(Category $category, Request $request)
     {
         $fileName = $category->id . '_' . Str::random() . '.' . $request->file('image')->getClientOriginalExtension();
-        $path = 'images/categories/';
+        $path = 'categories';
         $request->file('image')->storeAs($path, $fileName, 'images');
-        $category->images()->create(['file_name' => $path . $fileName]);
+        $category->images()->create(['file_name' => $path .'/'.$fileName]);
         return redirect()->back()->with('success', 'image created');
     }
 
