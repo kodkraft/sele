@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\Category\CategoryImageController;
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,13 +20,15 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('admin/categories', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('category.index');
-    Route::get('admin/categories/create', [\App\Http\Controllers\Admin\CategoryController::class, 'create']);
-    Route::get('admin/categories/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'show']);
-    Route::get('admin/categories/{category}/edit', [\App\Http\Controllers\Admin\CategoryController::class, 'edit']);
-    Route::patch('admin/categories/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'update']);
-    Route::post('admin/categories', [\App\Http\Controllers\Admin\CategoryController::class, 'store']);
-    Route::delete('admin/categories/{category}', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('category.delete');
+    Route::get('admin/categories', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('admin/categories/create', [CategoryController::class, 'create']);
+    Route::get('admin/categories/{category}', [CategoryController::class, 'show']);
+    Route::get('admin/categories/{category}/edit', [CategoryController::class, 'edit']);
+    Route::patch('admin/categories/{category}', [CategoryController::class, 'update']);
+    Route::post('admin/categories', [CategoryController::class, 'store']);
+    Route::delete('admin/categories/{category}', [CategoryController::class, 'destroy'])->name('category.delete');
+    //category images
+    Route::get('admin/categories/{category}/images', [CategoryImageController::class, 'index']);
 
 });
 

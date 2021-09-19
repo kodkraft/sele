@@ -15,7 +15,7 @@
 
     <!-- Authenticated User -->
     <div class="flex flex-row items-center gap-4 mr-2">
-        <h1 class="text-sm text-gray-600">Olgun Özoktaş</h1>
+        <h1 class="text-sm text-gray-600">{{@ auth()->user()->name}}</h1>
         <a href="" class="border-l border-gray-200 pl-4">
             <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                  xmlns="http://www.w3.org/2000/svg">
