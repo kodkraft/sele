@@ -19,6 +19,7 @@
         "postcss": "^8.1.14",
         "postcss-import": "^14.0.1",
         "select2": "^4.1.0-rc.0",
+        "sweetalert2": "^11.1.6",
         "tailwindcss": "^2.2.2"
     },
     "dependencies": {

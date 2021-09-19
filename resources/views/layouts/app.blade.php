@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css?id=' . uniqid()) }}">
 </head>
 <body>
+
 <div class="relative min-h-screen md:flex">
     @include('layouts.partials.sidebar')
     <div class="flex-1">
@@ -16,7 +17,7 @@
         @yield('content')
     </div>
 </div>
-<script src="{{ asset('js/alpine.js') }}" defer></script>
+<script src="{{ asset('js/app.js') }}"></script>
 @stack('js')
 <script>
     // grab everything we need
@@ -27,6 +28,18 @@
     btn.addEventListener("click", () => {
         sidebar.classList.toggle("-translate-x-full");
     });
+
+    @if(Session::has('success'))
+    Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: '{{session('success')}}',
+        showConfirmButton: false,
+        timer: 1500
+    })
+    @endif
+
 </script>
 </body>
 </html>

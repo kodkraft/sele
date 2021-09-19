@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CategoryController extends Controller
 {
@@ -29,7 +30,11 @@ class CategoryController extends Controller
     {
         $category = new Category();
         $category->fill($request->toArray())->save();
-        return redirect()->back();
+        $message = $category->title . ' created';
+        Log::info($message);
+
+        return redirect()->back()->with('success', $message);
+
     }
 
     /**

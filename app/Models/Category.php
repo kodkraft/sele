@@ -15,10 +15,8 @@ use Kalnoy\Nestedset\NodeTrait;
  */
 class Category extends Model
 {
-//    use NodeTrait;
-
+    use NodeTrait;
     use HasFactory;
-
     protected $guarded = ['id'];
 
 }
