@@ -19,8 +19,9 @@ class CategoryImageController extends Controller
     public function store(Category $category, Request $request)
     {
         $fileName = $category->id . '_' . Str::random() . '.' . $request->file('image')->getClientOriginalExtension();
-        $request->file('image')->storeAs('images', $fileName, 'images');
-        $category->images()->create(['file_name' => $fileName]);
+        $path = 'images/categories/';
+        $request->file('image')->storeAs($path, $fileName, 'images');
+        $category->images()->create(['file_name' => $path . $fileName]);
         return redirect()->back()->with('success', 'image created');
     }
 

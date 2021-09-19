@@ -5,11 +5,13 @@ namespace Database\Seeders;
 use App\Models\Addresses;
 use App\Models\Category;
 use App\Models\Customer;
+use App\Models\Image;
 use App\Models\Order;
 use App\Models\OrderStatus;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,17 +22,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
         $users = User::factory(10)->create();
         $admin = User::factory(1, ['email' => 'onkal.cengiz@gmail.com'])->create();
         $admin2 = User::factory(1,['email' => 'test@gmail.com'])->create();
 
         $admin = User::factory(1, ['email' => 'admin@sele.com'])->create();
         Category::factory(3)
+            ->has(Image::factory())
             ->create()
             ->each(function ($category) {
                 Category::factory(3, ['parent_id' => $category->id])
+                    ->has(Image::factory())
                     ->create()->each(function ($category) {
                         Category::factory(3, ['parent_id' => $category->id])
+                            ->has(Image::factory())
                             ->create();
                     });
             });

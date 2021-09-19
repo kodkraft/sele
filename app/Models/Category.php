@@ -31,7 +31,7 @@ class Category extends Model
 
     public function images()
     {
-        return $this->morphMany(Image::class, 'imageble');
+        return $this->morphMany(Image::class, 'imageable');
     }
 
     public function getTitleWithPathAttribute()
