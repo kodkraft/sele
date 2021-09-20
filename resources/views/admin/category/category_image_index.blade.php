@@ -18,7 +18,7 @@
                              src="{{url('images/'.$image->file_name)}}">
                     </a>
                     <div class="mt-4">
-                        <button>Delete</button>
+                        <button>@lang('common.delete')</button>
                     </div>
                 </div>
             @endforeach

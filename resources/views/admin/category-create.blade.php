@@ -1,5 +1,8 @@
-@extends('layouts.app')
+<?php
+/**@var \App\Models\Category[]|\Kalnoy\Nestedset\Collection $categories */
 
+?>
+@extends('layouts.app')
 @section('content')
     <div class="flex flex-col">
 
@@ -31,7 +34,7 @@
                                     name="parent_id"
                                     class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out select2">
                                 @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->title_with_path }}</option>
                                 @endforeach
                             </select>
                         </div>
