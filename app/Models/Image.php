@@ -18,9 +18,17 @@ class Image extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $attributes = ['url'];
 
     public function imageable()
     {
         return $this->morphTo();
     }
+
+    public function getUrlAttribute()
+    {
+        return url('images/' . $this->file_name);
+    }
+
+
 }

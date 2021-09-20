@@ -16,6 +16,7 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property mixed $path
  * @property mixed $title_with_path
  * @property Image[]|Collection $images
+ * @property Image $image
  */
 class Category extends Model
 {
@@ -32,6 +33,11 @@ class Category extends Model
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function image()
+    {
+        return $this->images->sortBy('id')->last();
     }
 
     public function getTitleWithPathAttribute()
