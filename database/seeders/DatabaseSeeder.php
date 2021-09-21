@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Addresses;
+use App\Models\Admin\Setting;
 use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Image;
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
         $users = User::factory(10)->create();
         $admin = User::factory(1, ['email' => 'onkal.cengiz@gmail.com'])->create();
         $admin2 = User::factory(1,['email' => 'test@gmail.com'])->create();
+
 
         $admin = User::factory(1, ['email' => 'admin@sele.com'])->create();
         Category::factory(3)
