@@ -14,8 +14,8 @@ class AddLeftAndRightToCategories extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->unsignedInteger('_lft');
-            $table->unsignedInteger('_rgt');
+            $table->unsignedInteger('_lft')->nullable();
+            $table->unsignedInteger('_rgt')->nullable();
         });
 
         \App\Models\Category::fixTree();

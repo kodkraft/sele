@@ -17,8 +17,8 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-    protected $attributes = ['url'];
+    protected $fillable = ['file_name','imageble_id','imageable_type'];
+    protected $appends = ['url'];
 
     public function imageable()
     {
