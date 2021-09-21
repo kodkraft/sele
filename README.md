@@ -79,5 +79,7 @@ sudo vim /etc/hosts
 ```
 
 ### Login
+```
 default username : admin@sele.com
 default password : password
+```
