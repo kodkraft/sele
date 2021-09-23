@@ -24,7 +24,7 @@ class Category extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $table = 'sele.categories';
+
 
     public function getPathAttribute()
     {
