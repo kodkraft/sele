@@ -1,5 +1,7 @@
+<?php
+/**@var \App\Models\Category[] $categories*/
+    ?>
 @extends('layouts.app')
-
 @section('content')
     <div class="flex flex-row justify-end mt-8 container px-4">
         <a href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'create'])}}">
@@ -16,6 +18,7 @@
                     </a>
                     <div class="mt-4">
                         <h2 class="text-gray-900 title-font text-lg font-medium">{{ $category->title }}</h2>
+                        <h2 class="text-gray-900 title-font text-lg font-medium">{{ $category->products->count() }}</h2>
                     </div>
                 </div>
             @endforeach

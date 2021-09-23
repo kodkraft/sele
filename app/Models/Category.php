@@ -17,6 +17,7 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property mixed $title_with_path
  * @property Image[]|Collection $images
  * @property Image $image
+ * @property Product[]|Collection $products
  */
 class Category extends Model
 {
@@ -47,6 +48,11 @@ class Category extends Model
             return $this->path . '/' . $this->title;
         }
         return $this->title;
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 
 }
