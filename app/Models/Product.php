@@ -36,4 +36,14 @@ class Product extends Model
     {
         return $this->belongsToMany(Property::class);
     }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function image()
+    {
+        return $this->images->sortBy('id')->last();
+    }
 }
