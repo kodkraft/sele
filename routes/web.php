@@ -38,7 +38,13 @@ Route::middleware(['auth'])->group(function () {
 
     //products
     Route::get('admin/products', [ProductController::class, 'index']);
-    Route::get('admin/products/create ', [ProductController::class, 'create']);
+    Route::get('admin/products/create', [ProductController::class, 'create']);
+    Route::get('admin/products/{product}', [ProductController::class, 'show']);
+    Route::get('admin/products/{product}/edit', [ProductController::class, 'edit']);
+    Route::patch('admin/products/{product}', [ProductController::class, 'update']);
+    Route::delete('admin/products/{product}', [ProductController::class, 'destroy']);
+    Route::post('admin/products', [ProductController::class, 'store']);
+
 
     //product images
     Route::get('admin/products/{product}/images', [ProductImageController::class, 'index']);

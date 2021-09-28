@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SaveProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -23,9 +25,13 @@ class ProductController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(SaveProductRequest $request)
     {
-        //
+        $product = new Product();
+        $product->fill($request->all());
+        $product->save();
+        Log::info($message = $product->title . ' created');
+        return redirect()->back()->with('success', $message);
     }
 
 
