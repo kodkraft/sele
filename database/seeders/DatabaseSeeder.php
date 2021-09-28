@@ -23,10 +23,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
         $users = User::factory(10)->create();
         $admin = User::factory(1, ['email' => 'onkal.cengiz@gmail.com'])->create();
-        $admin2 = User::factory(1,['email' => 'test@gmail.com'])->create();
+        $admin2 = User::factory(1, ['email' => 'test@gmail.com'])->create();
 
 
         $admin = User::factory(1, ['email' => 'admin@sele.com'])->create();
@@ -48,7 +47,7 @@ class DatabaseSeeder extends Seeder
             'category_id' => function () use ($categories) {
                 return $categories->random()->id;
             }
-        ])->create();
+        ])->has(Image::factory())->create();
 
         $customers = Customer::factory(10, [
             'user_id' => function () use ($users) {
@@ -68,7 +67,5 @@ class DatabaseSeeder extends Seeder
             },
             'order_status_id' => random_int(1, 3)
         ])->create();
-
-
     }
 }
