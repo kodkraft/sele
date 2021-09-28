@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SaveProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -21,7 +22,9 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('admin/product-create');
+        $categories = Category::all();
+        return view('admin/product-create')
+            ->with('categories', $categories);
     }
 
 

@@ -1,4 +1,6 @@
 <?php
+/**@var \App\Models\Category[]|\Kalnoy\Nestedset\Collection $categories */
+
 ?>
 @extends('layouts.app')
 @section('content')
@@ -25,6 +27,34 @@
                                    id="title"
                                    name="title"
                                    class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+
+                        <div class="relative mb-4">
+                            <label for="price" class="leading-7 text-sm text-gray-600">@lang('common.price')</label>
+                            <input type="number"
+                                   id="price"
+                                   name="price"
+                                   class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+
+                        <div class="relative mb-4">
+                            <label for="description" class="leading-7 text-sm text-gray-600">@lang('common.description')</label>
+                            <textarea
+                                   id="description"
+                                   name="description"
+                                   class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
+                        </div>
+
+                        <div class="relative mb-4">
+                            <label for="parent"
+                                   class="leading-7 text-sm text-gray-600">@lang('common.category')</label>
+                            <select id="category_id"
+                                    name="category_id"
+                                    class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out select2">
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->title_with_path }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
 
