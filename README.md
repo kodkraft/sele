@@ -5,6 +5,7 @@ Sele is a free open source ecommerce platform build with laravel for online merc
 ## Requirements
 
 * PHP >= 8.0
+* 
 
 
 ## Installation
