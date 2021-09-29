@@ -38,26 +38,34 @@ class ProductController extends Controller
     }
 
 
+    public function edit(Product $product)
+    {
+        $categories = Category::all();
+        return view('admin/product-edit')
+            ->with('product', $product)
+            ->with('categories', $categories);
+    }
+
+
     public function show(Product $product)
     {
         //
     }
 
 
-    public function edit(Product $product)
+    public function update(SaveProductRequest $request, Product $product)
     {
-        //
-    }
-
-
-    public function update(Request $request, Product $product)
-    {
-        //
+        $product->fill($request->all());
+        $product->save();
+        Log::info($message = $product->title . ' updated');
+        return redirect()->back()->with('success', $message);
     }
 
 
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        Log::info($message = $product->title . ' deleted');
+        return redirect()->back()->with('success', $message);
     }
 }
