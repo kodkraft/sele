@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 /**
  * @property mixed $id
  * @property mixed $name
- * @property mixed $values
+ * @property array $values
  * @property mixed $description
  * @property mixed $category_id
  * @property mixed $created_at
@@ -19,6 +19,10 @@ use Illuminate\Support\Collection;
 class Property extends Model
 {
     use HasFactory;
+
+    protected $casts = ['values' => 'array'];
+    protected $guarded = ['id'];
+
 
     public function products()
     {
