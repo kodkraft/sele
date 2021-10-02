@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,7 +25,8 @@ class ProductFactory extends Factory
         return [
             'title' => 'PRD-' . strtoupper($this->faker->bothify('##???')),
             'price' => $this->faker->numberBetween(10, 1000),
-            'description' => $this->faker->text
+            'description' => $this->faker->text,
+            'category_id'=>Category::factory()->create()->id
         ];
     }
 }
