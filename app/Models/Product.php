@@ -16,7 +16,7 @@ use Illuminate\Support\Collection;
  * @property mixed $updated_at
  * @property Category $category
  * @property Order[]|Collection $orders
- * @property Property[]|Collection $attributes
+ * @property Property[]|Collection $properties
  */
 class Product extends Model
 {
@@ -36,7 +36,7 @@ class Product extends Model
 
     public function properties()
     {
-        return $this->belongsToMany(Property::class);
+        return $this->belongsToMany(Property::class)->withPivot('value');
     }
 
     public function images()

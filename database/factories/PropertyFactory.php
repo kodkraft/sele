@@ -22,7 +22,10 @@ class PropertyFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->bothify('prop###'),
+            'values' => json_encode([$this->faker->word, $this->faker->word]),
+            'description' => $this->faker->paragraph
+
         ];
     }
 }

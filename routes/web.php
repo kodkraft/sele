@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Category\CategoryImageController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\Product\ProductImageController;
+use App\Http\Controllers\Admin\Product\ProductPropertyController;
 use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/products/{product}/images', [ProductImageController::class, 'index']);
     Route::post('admin/products/{product}/images', [ProductImageController::class, 'store']);
     Route::delete('admin/products/{product}/images/{image}', [ProductImageController::class, 'destroy']);
+
+    //product propert
+    Route::get('admin/products/{product}/properties', [ProductPropertyController::class, 'index']);
+    Route::post('admin/products/{product}/properties', [ProductPropertyController::class, 'store']);
+    Route::delete('admin/products/{product}/properties/{property}', [ProductPropertyController::class, 'destroy']);
 
 
 

@@ -10,6 +10,7 @@ use App\Models\Image;
 use App\Models\Order;
 use App\Models\OrderStatus;
 use App\Models\Product;
+use App\Models\Property;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -27,6 +28,8 @@ class DatabaseSeeder extends Seeder
         $admin = User::factory(1, ['email' => 'onkal.cengiz@gmail.com'])->create();
         $admin2 = User::factory(1, ['email' => 'test@gmail.com'])->create();
 
+        /** @var Property[] $properties */
+        $properties = Property::factory(50)->create();
 
         $admin = User::factory(1, ['email' => 'admin@sele.com'])->create();
         Category::factory(3)
@@ -47,7 +50,8 @@ class DatabaseSeeder extends Seeder
             'category_id' => function () use ($categories) {
                 return $categories->random()->id;
             }
-        ])->has(Image::factory())->create();
+        ])->hasAttached(Property::factory()->count(2), ['value' => 'some value'])
+            ->has(Image::factory())->create();
 
         $customers = Customer::factory(10, [
             'user_id' => function () use ($users) {

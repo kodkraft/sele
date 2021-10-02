@@ -7,13 +7,13 @@ use App\Models\Product;
 use App\Models\Property;
 use Illuminate\Http\Request;
 
-class PropertyController extends Controller
+class ProductPropertyController extends Controller
 {
 
     public function index(Product $product)
     {
         $properties = Property::all();
-        return view('admin/product/property-index')
+        return view('admin/product/product-property-index')
             ->with('properties', $properties)
             ->with('product', $product);
     }
@@ -27,7 +27,7 @@ class PropertyController extends Controller
 
     public function store(Request $request, Product $product)
     {
-        //
+
     }
 
     public function show(Product $product, Property $property)
