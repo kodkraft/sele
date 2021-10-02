@@ -2,8 +2,6 @@
 
 namespace Tests\Http\Controllers\Admin\Product;
 
-use App\Http\Controllers\Admin\Product\ProductPropertyController;
-use App\Models\Image;
 use App\Models\Product;
 use App\Models\Property;
 use App\Models\User;
