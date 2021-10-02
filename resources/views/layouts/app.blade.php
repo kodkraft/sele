@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sele | {{$title ?? 'Admin'}}</title>
     <link rel="stylesheet" href="{{ asset('css/app.css?id=' . uniqid()) }}">
+    @stack('css')
 </head>
-<body>
+<body class="theme-blue">
 
 <div class="relative min-h-screen md:flex">
     @include('layouts.partials.sidebar')
@@ -23,12 +24,36 @@
 <script>
     // grab everything we need
     const btn = document.querySelector(".mobile-menu-button");
-    const sidebar = document.querySelector(".sidebar");
+    const btnToggle = document.querySelector("#sidebar-menu-toggle");
+    const menuToggle = document.querySelector("#menu-toggle");
+    const sidebar = document.querySelector(".sidebar-menu");
+    const sidebarLogo = document.querySelector("#sidebar-logo");
+    const container = document.querySelector("#container");
 
     // add our event listener for the click
     btn.addEventListener("click", () => {
-        sidebar.classList.toggle("-translate-x-full");
+        toggleSideBar(true);
     });
+
+    btnToggle.addEventListener("click", () => {
+        toggleSideBar();
+    });
+
+    menuToggle.addEventListener("click", () => {
+        toggleSideBar();
+    });
+
+    function toggleSideBar(isMobile = false) {
+        if (isMobile) {
+            sidebar.classList.toggle("-translate-x-full");
+        }
+
+        sidebar.classList.toggle("md:relative");
+        sidebar.classList.toggle("md:translate-x-0");
+        menuToggle.classList.toggle('md:hidden');
+        menuToggle.classList.toggle('md:flex');
+        container.classList.toggle('container');
+    }
 
     @if(Session::has('success'))
     Swal.fire({
