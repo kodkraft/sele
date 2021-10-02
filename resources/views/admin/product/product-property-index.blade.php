@@ -9,7 +9,7 @@
             action="{{action([\App\Http\Controllers\Admin\Product\ProductPropertyController::class,'store'],['product'=>$product->id])}}"
             method="post">
         @csrf
-        <select class="ml-2">
+        <select class="ml-2" name="property_id">
             @foreach($properties as $prop)
             <option value="{{$prop->id}}">{{$prop->name}}</option>
             @endforeach
@@ -27,7 +27,7 @@
                               method="post">
                             @csrf
                             @method('delete')
-                            <button>@lang('common.delete')</button>
+                            <button type="submit" class="swal-submit">@lang('common.delete')</button>
                         </form>
                     </div>
 
