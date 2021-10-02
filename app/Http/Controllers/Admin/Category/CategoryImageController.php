@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CategoryImageController extends Controller
@@ -27,5 +28,9 @@ class CategoryImageController extends Controller
 
     public function destroy(Category $category, Image $image)
     {
+        Storage::disk('images')->delete($image->file_name);
+        $image->delete();
+        return redirect()->back()->with('success', 'image deleted');
+
     }
 }

@@ -7,7 +7,9 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Nette\Utils\FileSystem;
 
 class ProductImageController extends Controller
 {
@@ -26,7 +28,10 @@ class ProductImageController extends Controller
         return redirect()->back()->with('success', 'image created');
     }
 
-    public function destroy(Product $category, Image $image)
+    public function destroy(Product $product, Image $image)
     {
+        Storage::disk('images')->delete($image->file_name);
+        $image->delete();
+        return redirect()->back()->with('success', 'image deleted');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @property mixed $id
@@ -17,7 +18,7 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['file_name','imageble_id','imageable_type'];
+    protected $fillable = ['file_name', 'imageble_id', 'imageable_type'];
     protected $appends = ['url'];
 
     public function imageable()
@@ -28,6 +29,11 @@ class Image extends Model
     public function getUrlAttribute()
     {
         return url('images/' . $this->file_name);
+    }
+
+    public function deleteFile()
+    {
+        Storage::disk('images')->delete($this->file_name);
     }
 
 
