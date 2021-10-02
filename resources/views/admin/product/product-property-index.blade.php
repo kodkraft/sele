@@ -28,7 +28,10 @@
                           method="post">
                         @csrf
                         @method('delete')
-                        <button type="submit" class="swal-submit">@lang('common.delete')</button>
+                        <button type="submit"
+                                data-text="{{$property->name}} will be deleted."
+                                data-title="@lang('common.are_you_sure')"
+                                class="swal-submit">@lang('common.delete')</button>
                     </form>
                 </div>
 
