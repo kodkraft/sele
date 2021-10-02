@@ -2,7 +2,7 @@
 /**@var \App\Models\Product[] $products */
 
 ?>
-@extends('layouts.app')
+@extends('layouts.app',['title'=>'Products'])
 @section('content')
     <div class="flex flex-row justify-end mt-8 container px-4">
         <a href="{{action([\App\Http\Controllers\Admin\ProductController::class,'create'])}}">

@@ -4,7 +4,7 @@
 /**@var \App\Models\Product $product */
 
 ?>
-@extends('layouts.app')
+@extends('layouts.app',['title'=>'Edit '.$product->title])
 @section('content')
     <div class="flex flex-col">
 
