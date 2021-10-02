@@ -4987,6 +4987,26 @@ window.$ = window.jQuery = (jquery__WEBPACK_IMPORTED_MODULE_2___default());
 window.Swal = (sweetalert2__WEBPACK_IMPORTED_MODULE_1___default());
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__.default;
 alpinejs__WEBPACK_IMPORTED_MODULE_0__.default.start();
+jquery__WEBPACK_IMPORTED_MODULE_2___default()(".swal-submit").click(function (e) {
+  e.preventDefault();
+  e.target.form.checkValidity();
+  e.target.form.reportValidity();
+
+  if (e.target.form.checkValidity()) {
+    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+      title: jquery__WEBPACK_IMPORTED_MODULE_2___default()(e.target).data().title,
+      text: jquery__WEBPACK_IMPORTED_MODULE_2___default()(e.target).data().text,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "Cancel"
+    }).then(function (result) {
+      if (result.value) {
+        e.target.form.submit();
+      }
+    });
+  }
+});
 
 /***/ }),
 

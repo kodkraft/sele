@@ -12,3 +12,23 @@ window.Swal =Swal;
 window.Alpine = Alpine;
 
 Alpine.start();
+
+$(".swal-submit").click(function(e) {
+    e.preventDefault();
+    e.target.form.checkValidity();
+    e.target.form.reportValidity();
+    if(e.target.form.checkValidity()){
+        Swal.fire({
+            title: $(e.target).data().title,
+            text: $(e.target).data().text,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes",
+            cancelButtonText:"Cancel"
+        }).then(function(result) {
+            if (result.value) {
+                e.target.form.submit();
+            }
+        })
+    }
+});

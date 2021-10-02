@@ -28,7 +28,7 @@ class StoreProductPropertyRequest extends FormRequest
     public function rules()
     {
         return [
-            'property_id' => 'required|exists:properties,id',
+            'property_id' => 'required|exists:properties,id|unique:product_property,property_id',
 
         ];
     }
