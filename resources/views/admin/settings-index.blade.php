@@ -9,7 +9,13 @@
         @foreach($settings as $setting)
             <tr>
                 <th>{{$setting->name}}</th>
-                <td>{{$setting->value}}</td>
+                <td>
+                    <form method="post"
+                          action="{{action([\App\Http\Controllers\Admin\SettingController::class,'update'],['setting'=>$setting->id])}}">
+                        <input type="text" name="value" value="{{$setting->value}}" required> @csrf @method('patch')
+                        <button type="submit">@lang('common.save')</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </tbody>

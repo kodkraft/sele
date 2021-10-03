@@ -60,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
 
     //settings
     Route::get('admin/settings', [SettingController::class, 'index']);
+    Route::patch('admin/settings/{setting}', [SettingController::class, 'update']);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
