@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\Product\ProductImageController;
 use App\Http\Controllers\Admin\Product\ProductPropertyController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/categories','App\Http\Controllers\Customer\CategoryController@index')->name('customer-category.index');
+Route::get('/categories', 'App\Http\Controllers\Customer\CategoryController@index')->name('customer-category.index');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('admin/categories', [CategoryController::class, 'index'])->name('category.index');
@@ -57,8 +58,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('admin/products/{product}/properties', [ProductPropertyController::class, 'store']);
     Route::delete('admin/products/{product}/properties/{property}', [ProductPropertyController::class, 'destroy']);
 
-
-
+    //settings
+    Route::get('admin/settings', [SettingController::class, 'index']);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -71,5 +71,7 @@ class DatabaseSeeder extends Seeder
             },
             'order_status_id' => random_int(1, 3)
         ])->create();
+
+        Setting::factory(50)->create();
     }
 }
