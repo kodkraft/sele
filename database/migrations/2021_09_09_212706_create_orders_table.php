@@ -19,8 +19,8 @@ class CreateOrdersTable extends Migration
             $table->foreignId('customer_id')->constrained();
             $table->text('shipping_address');
             $table->text('billing_address');
-
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
