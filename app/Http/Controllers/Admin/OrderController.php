@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -72,6 +73,8 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        Log::info($message = 'Order ' . $order->id . ' deleted');
+        $order->delete();
+        return redirect()->back()->with('success', $message);
     }
 }
