@@ -14,7 +14,7 @@ class ProductPropertyControllerTest extends TestCase
     public function testStore()
     {
         /** @var Product $product */
-        $product = Product::first();
+        $product = Product::factory()->create();
         /** @var Property $property */
         $property = Property::factory()->create();
         $url = 'admin/products/' . $product->id . '/properties';
@@ -29,7 +29,7 @@ class ProductPropertyControllerTest extends TestCase
     public function testIndex()
     {
         /** @var Product $product */
-        $product = Product::first();
+        $product = Product::factory()->create();
         $url = 'admin/products/' . $product->id . '/properties';
         $user = User::factory()->create();
         $response = $this->actingAs($user)->get($url)->assertOk();
