@@ -22,6 +22,13 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $appends = ['order_total'];
+
+    public function getOrderTotalAttribute()
+    {
+        return $this->products()->withPivot(['price'])->get()->sum('pivot.price');
+    }
+
     public function products()
     {
         return $this->belongsToMany(Product::class);

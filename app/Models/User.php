@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,6 +11,20 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @property mixed id
+ * @property mixed name
+ * @property mixed email
+ * @property mixed email_verified_at
+ * @property mixed password
+ * @property mixed two_factor_secret
+ * @property mixed two_factor_recovery_codes
+ * @property mixed remember_token
+ * @property mixed current_team_id
+ * @property mixed profile_photo_path
+ * @property Carbon created_at
+ * @property Carbon updated_at
+ */
 class User extends Authenticatable
 {
     use HasApiTokens;

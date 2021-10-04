@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Category\CategoryImageController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\Product\ProductImageController;
 use App\Http\Controllers\Admin\Product\ProductPropertyController;
 use App\Http\Controllers\Admin\ProductController;
@@ -61,6 +62,10 @@ Route::middleware(['auth'])->group(function () {
     //settings
     Route::get('admin/settings', [SettingController::class, 'index']);
     Route::patch('admin/settings/{setting}', [SettingController::class, 'update']);
+
+    //orders
+    Route::get('admin/orders', [OrderController::class, 'index']);
+
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

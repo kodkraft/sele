@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
             });
         $categories = Category::all();
 
-        Product::factory(50, [
+        $products = Product::factory(50, [
             'category_id' => function () use ($categories) {
                 return $categories->random()->id;
             }
@@ -65,11 +65,17 @@ class DatabaseSeeder extends Seeder
         OrderStatus::factory()->create(['id' => 2, 'name' => 'Ready']);
         OrderStatus::factory()->create(['id' => 3, 'name' => 'Sent']);
 
-        $orders = Order::factory(50, [
+        Order::factory(50, [
             'customer_id' => function () use ($customers) {
                 return $customers->random()->id;
             },
-            'order_status_id' => random_int(1, 3)
+            'order_status_id' => function () {
+                return random_int(1, 3);
+            }
+        ])->hasAttached($products->random(), [
+            'price' => 100
+        ])->hasAttached($products->random(), [
+            'price' => 13
         ])->create();
 
         Setting::factory(50)->create();
