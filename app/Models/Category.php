@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Kalnoy\Nestedset\NodeTrait;
+use Laravel\Scout\Searchable;
 
 /**
  * @property mixed $id
@@ -23,8 +24,12 @@ class Category extends Model
 {
     use NodeTrait;
     use HasFactory;
-
+    use Searchable{
+        NodeTrait::usesSoftDelete insteadof Searchable;
+    }
     protected $guarded = ['id'];
+
+
 
 
     public function getPathAttribute()
