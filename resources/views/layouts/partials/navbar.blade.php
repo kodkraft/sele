@@ -8,22 +8,26 @@
                   d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
 
-        <div class="w-full flex flex-row search-bar">
-            <input type="text" class="rounded-l-lg focus:outline-none w-full pl-2 h-10 search-input"
-                   placeholder="Search...">
-            <button class="h-max p-2 rounded-r-lg search-button">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-            </button>
-        </div>
+
+    </div>
+    <div class="w-full flex flex-row search-bar">
+        <select
+                id="full-text-search">
+            <option> aaa</option>
+            <option> aaa</option>
+            <option> aaa</option>
+            <option> aaa</option>
+            <option> aaa</option>
+            <option> aaa</option>
+            <option> aaa</option>
+
+
+        </select>
     </div>
 
     <!-- Authenticated User -->
     <div class="flex flex-row items-center gap-4 mr-2">
-        <h1 class="text-sm text-gray-600">Olgun Özoktaş</h1>
+        <h1 class="text-sm text-gray-600">{{auth()->user()->name}}</h1>
         <a href="" class="border-l border-gray-200 pl-4">
             <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                  xmlns="http://www.w3.org/2000/svg">
@@ -33,3 +37,11 @@
         </a>
     </div>
 </nav>
+
+@push('js')
+    <script>
+        $(document).ready(function () {
+            $('#full-text-search').select2()
+        });
+    </script>
+@endpush

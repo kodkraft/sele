@@ -19,8 +19,9 @@
     </div>
 </div>
 
-@stack('js')
+
 <script src="{{ asset('js/app.js') }}"></script>
+@stack('js')
 <script>
     // grab everything we need
     const btn = document.querySelector(".mobile-menu-button");

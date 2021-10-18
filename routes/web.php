@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Category\CategoryImageController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\FullTextSearchController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\Product\ProductImageController;
 use App\Http\Controllers\Admin\Product\ProductPropertyController;
@@ -67,6 +68,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/orders', [OrderController::class, 'index']);
     Route::get('admin/orders/{order}', [OrderController::class, 'show']);
 
+    //search
+    Route::get('admin/search', [FullTextSearchController::class, 'index']);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

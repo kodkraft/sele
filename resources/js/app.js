@@ -11,6 +11,8 @@ window.Swal =Swal;
 
 window.Alpine = Alpine;
 
+require('select2');
+
 Alpine.start();
 
 $(".swal-submit").click(function(e) {
