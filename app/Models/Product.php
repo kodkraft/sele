@@ -25,6 +25,7 @@ class Product extends Model
     use Searchable;
 
     protected $guarded = ['id'];
+    protected $appends=['text'];
 
     public function category()
     {
@@ -49,5 +50,15 @@ class Product extends Model
     public function image()
     {
         return $this->images->sortBy('id')->last();
+    }
+
+    public function makeAllSearchableUsing($query)
+    {
+        return $query->with('category');
+    }
+
+    public function getTextAttribute()
+    {
+        return $this->title;
     }
 }

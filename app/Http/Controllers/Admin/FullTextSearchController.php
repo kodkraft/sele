@@ -10,7 +10,8 @@ class FullTextSearchController extends Controller
 {
     public function index(Request $request)
     {
-        $products = Product::search($request->search);
+        $products = Product::search($request->search)->paginate(10);
+
         return $products;
     }
 }
