@@ -22,7 +22,7 @@ use Laravel\Scout\Searchable;
 class Product extends Model
 {
     use HasFactory;
-    use Searchable;
+    //use Searchable;
 
     protected $guarded = ['id'];
     protected $appends=['text'];

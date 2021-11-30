@@ -24,9 +24,9 @@ class Category extends Model
 {
     use NodeTrait;
     use HasFactory;
-    use Searchable{
-        NodeTrait::usesSoftDelete insteadof Searchable;
-    }
+//    use Searchable{
+//        NodeTrait::usesSoftDelete insteadof Searchable;
+//    }
     protected $guarded = ['id'];
 
 
