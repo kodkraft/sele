@@ -1,19 +1,11 @@
 require('./bootstrap');
 
-import Alpine from 'alpinejs';
-
 import Swal from 'sweetalert2';
 
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 
 window.Swal =Swal;
-
-window.Alpine = Alpine;
-
-require('select2');
-
-Alpine.start();
 
 $(".swal-submit").click(function(e) {
     e.preventDefault();

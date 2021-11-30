@@ -21,9 +21,7 @@
     "postcss-import": "^14.0.1",
     "resolve-url-loader": "^4.0.0",
     "sass": "^1.43.2",
-    "sass-loader": "^12.2.0",
-    "select2": "^4.1.0-rc.0",
-    "sweetalert2": "^11.1.6",
-    "tailwindcss": "^2.2.2"
+    "sass-loader": "^12.2.0"
+
   }
 }
