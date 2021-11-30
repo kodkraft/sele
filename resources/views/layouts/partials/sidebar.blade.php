@@ -4,42 +4,26 @@
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">
                     <span ></span>
-                    Dashboardnav
+                    Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{action([\App\Http\Controllers\Admin\OrderController::class,'index'])}}">
                     <span ></span>
                     Orders
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{action([\App\Http\Controllers\Admin\ProductController::class,'index'])}}">
                     <span ></span>
                     Products
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span ></span>
-                    Customers
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span ></span>
-                    Reports
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span ></span>
-                    Integrations
-                </a>
-            </li>
+
+
         </ul>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <!--<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>Saved reports</span>
             <a class="link-secondary" href="#" aria-label="Add a new report">
                 <span ></span>
@@ -52,18 +36,8 @@
                     Current month
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span ></span>
-                    Last quarter
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span ></span>
-                    Social engagement
-                </a>
-            </li>
+
+
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span ></span>
@@ -71,5 +45,6 @@
                 </a>
             </li>
         </ul>
+        -->
     </div>
 </nav>
