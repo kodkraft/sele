@@ -25,11 +25,11 @@
         </div>
         <div class="col-md-6">
             <label for="price" class="form-label">@lang('common.price')</label>
-            <input type="number" class="form-control" id="price" name="price">
+            <input type="number" class="form-control" id="price" name="price" value="{{old('price')}}">
         </div>
         <div class="col-12">
-            <label for="inputAddress" class="form-label">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <label for="description" class="form-label">@lang('common.description')</label>
+            <textarea type="text" class="form-control" id="description" name="description"></textarea>
         </div>
         <div class="col-12">
             <label for="inputAddress2" class="form-label">Address 2</label>
@@ -50,14 +50,7 @@
             <label for="inputZip" class="form-label">Zip</label>
             <input type="text" class="form-control" id="inputZip">
         </div>
-        <div class="col-12">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    Check me out
-                </label>
-            </div>
-        </div>
+
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Sign in</button>
         </div>
