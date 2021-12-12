@@ -19,7 +19,7 @@
             <div class="card h-100">
                 <img src="{{$product->image()?->url}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $product->title }}</h5>
+                    <h5 class="card-title">({{$product->id}}){{ $product->title }}</h5>
                     <p class="card-text">{{$product->short_description}}</p>
                 </div>
                 <div class="card-footer">
@@ -56,6 +56,12 @@
             </div>
         </div>
         @endforeach
+
+    </div>
+    <div class="row row-cols-1  pt-4 float-end">
+        <div class="">
+            {{$products->links()}}
+        </div>
     </div>
 
 

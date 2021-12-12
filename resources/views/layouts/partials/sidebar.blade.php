@@ -20,6 +20,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'index'])}}">
+                    <span ></span>
+                    @lang('common.categories')
+                </a>
+            </li>
+
 
         </ul>
 
