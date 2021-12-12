@@ -24,9 +24,18 @@ class Order extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $appends = ['order_total'];
+    protected $appends = ['order_total','price'];
 
     public function getOrderTotalAttribute()
+    {
+        return $this->products()
+            ->withPivot(['price','amount'])
+            ->get()
+            ->sum(function ($item) {
+                return $item->pivot->price * $item->pivot->amount;
+            });
+    }
+    public function getPriceAttribute()
     {
         return $this->products()
             ->withPivot(['price','amount'])
@@ -40,6 +49,12 @@ class Order extends Model
     {
         return $this->belongsToMany(Product::class)
             ->withPivot(['price','amount']);
+    }
+
+    //order products
+    public function orderProducts()
+    {
+        return $this->hasMany(OrderProduct::class);
     }
 
     public function customer()
