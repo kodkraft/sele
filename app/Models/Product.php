@@ -18,6 +18,7 @@ use Laravel\Scout\Searchable;
  * @property Category $category
  * @property Order[]|Collection $orders
  * @property Property[]|Collection $properties
+ * @property string $short_description
  */
 class Product extends Model
 {
@@ -60,5 +61,15 @@ class Product extends Model
     public function getTextAttribute()
     {
         return $this->title;
+    }
+
+    public function getShortDescriptionAttribute()
+    {
+        //if description is larger than 100 characters, return the first 100 characters with ...
+        if (strlen($this->description) > 100) {
+            return substr($this->description, 0, 100) . '...';
+        }
+        return $this->description;
+
     }
 }
