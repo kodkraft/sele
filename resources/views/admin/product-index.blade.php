@@ -12,7 +12,7 @@
 
 
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 g-4">
 
         @foreach($products as $product)
         <div class="col">
@@ -23,9 +23,9 @@
                     <p class="card-text">{{$product->short_description}}</p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">
+                    <div class="float-start">
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                                 Actions
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -47,9 +47,11 @@
                                 </li>
 
                             </ul>
+
                         </div>
 
-                    </small>
+                    </div>
+                    <div class="float-end">{{$product->price}} ₺</div>
                 </div>
             </div>
         </div>
