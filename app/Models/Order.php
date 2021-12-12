@@ -28,12 +28,18 @@ class Order extends Model
 
     public function getOrderTotalAttribute()
     {
-        return $this->products()->withPivot(['price'])->get()->sum('pivot.price');
+        return $this->products()
+            ->withPivot(['price','amount'])
+            ->get()
+            ->sum(function ($item) {
+                return $item->pivot->price * $item->pivot->amount;
+            });
     }
 
     public function products()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)
+            ->withPivot(['price','amount']);
     }
 
     public function customer()
