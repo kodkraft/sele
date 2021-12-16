@@ -10,7 +10,7 @@
 @section('content')
     <div class="row">
         <!-- Order Details -->
-        <div class="col-md-6">
+        <div class="col-md-12 col-lg-9">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">{{$order->id}} Order Details</h4>
