@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Product\ProductImageController;
 use App\Http\Controllers\Admin\Product\ProductPropertyController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Customer\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/categories', 'App\Http\Controllers\Customer\CategoryController@index')->name('customer-category.index');
 
 Route::middleware(['auth'])->group(function () {
