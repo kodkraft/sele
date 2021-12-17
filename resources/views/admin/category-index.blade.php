@@ -1,7 +1,7 @@
 <?php
 /**@var \App\Models\Category[]|\Illuminate\Support\Collection $categories*/
     ?>
-@extends('layouts.app')
+@extends('layouts.app',['title'=>'Categories'])
 
 @push('css')
 
