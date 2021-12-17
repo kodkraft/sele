@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\Product\ProductImageController;
 use App\Http\Controllers\Admin\Product\ProductPropertyController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Customer\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -73,6 +74,18 @@ Route::middleware(['auth'])->group(function () {
 
     //search
     Route::get('admin/search', [FullTextSearchController::class, 'index']);
+
+    //properties
+    Route::get('admin/properties', [PropertyController::class, 'index']);
+    Route::get('admin/properties/create', [PropertyController::class, 'create']);
+    Route::post('admin/properties', [PropertyController::class, 'store']);
+    Route::get('admin/properties/{property}', [PropertyController::class, 'show']);
+    Route::get('admin/properties/{property}/edit', [PropertyController::class, 'edit']);
+    Route::patch('admin/properties/{property}', [PropertyController::class, 'update']);
+    Route::delete('admin/properties/{property}', [PropertyController::class, 'destroy']);
+
+
+
 });
 
 
