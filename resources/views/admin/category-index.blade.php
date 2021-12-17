@@ -1,78 +1,77 @@
+<?php
+/**@var \App\Models\Category[]|\Illuminate\Support\Collection $categories*/
+    ?>
 @extends('layouts.app')
 
 @push('css')
-    <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/datatables_extend.css') }}">
+
 @endpush
 
 @section('content')
-    <div class="mt-4 ml-4 mr-4 flex flex-col">
-        <div class="flex flex-row justify-end mb-4">
-            <a href="" class="flex flex-row px-4 py-2 text-white rounded-full bg-blue-400 hover:bg-blue-500 button">
-                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                Create Category
-            </a>
-        </div>
-        <table class="table stripe hover" id="table" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-            <thead>
-            <tr>
-                <th data-priority="1">Category Name</th>
-                <th data-priority="2">Total Products</th>
-                <th data-priority="3">Created Date</th>
-                <th data-priority="4">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($categories as $category)
-                <tr>
-                    <td>{{ $category->title }}</td>
-                    <td>0 Product</td>
-                    <td>{{ $category->created_at }}</td>
-                    <td>
-                        <div class="flex flex-row w-full justify-center">
-                            <button class="dt-b-default">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                </svg>
-                            </button>
+
+    <h2>@lang('common.category') <a class="btn btn-success" href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'create'])}}">
+            @lang('common.create')
+        </a></h2>
+    <hr>
+
+
+
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 g-4">
+
+        @foreach($categories as $category)
+            <div class="col">
+                <div class="card h-100">
+                    <img src="{{$category->image()?->url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">({{$category->id}}){{ $category->title }}</h5>
+                        <p class="card-text"><a href="{{route('category.product.index',['category'=>$category->id])}}">@lang('common.products'): {{$category->allProducts()->count()}}</a></p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="float-start">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Actions
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><h6 class="dropdown-header">@lang('common.category')</h6></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{route('category.product.index',['category'=>$category->id])}}">@lang('common.products')</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{action([\App\Http\Controllers\Admin\Category\CategoryImageController::class,'index'],['category'=>$category->id])}}">@lang('common.images')</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'edit'],['category'=>$category->id])}}">@lang('common.edit')</a>
+                                    </li>
+                                    <li>
+
+                                        <form action="{{action([\App\Http\Controllers\Admin\CategoryController::class,'destroy'],['category'=>$category->id])}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="dropdown-item swal-submit" type="submit">@lang('common.delete')</button>
+                                        </form>
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
                         </div>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+                        <div class="float-end">{{$category->title_with_path}}</div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+
+    </div>
+    <div class="row row-cols-1  pt-4 float-end">
+        <div class="">
+            {{$categories->links()}}
+        </div>
     </div>
 @endsection
 
 @push('js')
-    <script src="{{ asset('js/alpine.js') }}"></script>
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/datatables.min.js') }}"></script>
-    <script>
-        const table = $('#table').DataTable({
-            responsive: true,
-            paginate: true,
-            searching: false,
-            info: false,
-        }).columns.adjust()
-            .responsive.recalc();
 
-        function myFunction(x) {
-            if (x.matches) { // If media query matches
-                table.columns.adjust().responsive.recalc();
-            } else {
-                table.columns.adjust().responsive.recalc();
-            }
-        }
-
-        var x = window.matchMedia("(min-width: 700px)")
-        myFunction(x) // Call listener function at run time
-        x.addListener(myFunction) // Attach listener function on state changes
-    </script>
 @endpush

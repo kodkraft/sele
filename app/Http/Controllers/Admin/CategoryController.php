@@ -13,7 +13,9 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::with('products')->get();
+        $categories = Category::with('products')
+            ->with('descendants.products')
+            ->paginate(50);
         return view('admin/category-index')
             ->with('categories', $categories);
     }

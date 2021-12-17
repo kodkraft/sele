@@ -12,9 +12,23 @@ use Illuminate\Support\Facades\Log;
 class ProductController extends Controller
 {
 
-    public function index()
+    public function index(Category $category = null)
     {
-        $products = Product::orderBy('id','desc')->paginate(100);
+        //show all products if no category is selected
+        //show all category and its descendants products if category is selected
+        if ($category) {
+            $categories = $category->descendants()->pluck('id');
+            $categories[] = $category->getKey();
+            $products = Product::with('category.ancestors')
+                ->with('images')
+                ->whereIn('category_id', $categories)
+                ->paginate(100);
+        } else {
+            $products = Product::with('category.ancestors')
+                ->with('images')
+                ->paginate(100);
+        }
+
         return view('admin/product-index')
             ->with('products', $products);
     }

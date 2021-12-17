@@ -19,17 +19,17 @@ use Laravel\Scout\Searchable;
  * @property Image[]|Collection $images
  * @property Image $image
  * @property Product[]|Collection $products
+ * @property Category[]|Collection $descendants
  */
 class Category extends Model
 {
     use NodeTrait;
     use HasFactory;
+
 //    use Searchable{
 //        NodeTrait::usesSoftDelete insteadof Searchable;
 //    }
     protected $guarded = ['id'];
-
-
 
 
     public function getPathAttribute()
@@ -58,6 +58,17 @@ class Category extends Model
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function allProducts()
+    {
+        //get all products and all subcategories products
+        $items = collect();
+        foreach ($this->descendants as $descendant) {
+            $items = $items->merge($descendant->products);
+        }
+        return $items->merge($this->products);
+
     }
 
 }
