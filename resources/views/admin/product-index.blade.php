@@ -40,6 +40,9 @@
                                     <a class="dropdown-item" href="{{action([\App\Http\Controllers\Admin\ProductController::class,'edit'],['product'=>$product->id])}}">@lang('common.edit')</a>
                                 </li>
                                 <li>
+                                    <a class="dropdown-item" href="{{action([\App\Http\Controllers\Admin\Product\ProductPropertyController::class,'index'],['product'=>$product->id])}}">@lang('common.properties')</a>
+                                </li>
+                                <li>
 
                                     <form action="{{action([\App\Http\Controllers\Admin\ProductController::class,'destroy'],['product'=>$product->id])}}" method="post">
                                         @csrf
