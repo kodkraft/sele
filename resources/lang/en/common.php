@@ -43,5 +43,7 @@ return [
     'name' => 'Name',
     'value' => 'Value',
     'options' => 'Options',
+    'parent' => 'Parent',
+    'none' => 'None',
 
 ];

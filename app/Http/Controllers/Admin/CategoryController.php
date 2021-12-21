@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UpdateCategoryRequest;
+use App\Http\Requests\SaveCetegoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -31,7 +32,7 @@ class CategoryController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(SaveCetegoryRequest $request)
     {
         $category = new Category();
         $category->fill($request->toArray())->save();
