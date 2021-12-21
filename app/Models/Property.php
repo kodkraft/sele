@@ -15,17 +15,23 @@ use Illuminate\Support\Collection;
  * @property mixed $created_at
  * @property mixed $updated_at
  * @property Product[]|Collection $products
+ * @property Category $category
  */
 class Property extends Model
 {
     use HasFactory;
 
-    protected $casts = ['values' => 'array'];
+    protected $casts = ['values' => 'collection'];
     protected $guarded = ['id'];
 
 
     public function products()
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

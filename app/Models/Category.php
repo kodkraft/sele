@@ -20,6 +20,7 @@ use Laravel\Scout\Searchable;
  * @property Image $image
  * @property Product[]|Collection $products
  * @property Category[]|Collection $descendants
+ * @property string $name
  */
 class Category extends Model
 {
@@ -68,7 +69,11 @@ class Category extends Model
             $items = $items->merge($descendant->products);
         }
         return $items->merge($this->products);
+    }
 
+    public function getNameAttribute()
+    {
+        return $this->title;
     }
 
 }
