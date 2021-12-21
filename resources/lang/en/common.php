@@ -38,5 +38,10 @@ return [
     'customer_email' => 'Customer Email',
     'customer_phone' => 'Customer Phone',
     'customer_address' => 'Customer Address',
+    'properties' => 'Properties',
+    'property' => 'Property',
+    'name' => 'Name',
+    'value' => 'Value',
+    'options' => 'Options',
 
 ];

@@ -26,6 +26,12 @@
                     @lang('common.categories')
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{action([\App\Http\Controllers\Admin\PropertyController::class,'index'])}}">
+                    <span ></span>
+                    @lang('common.properties')
+                </a>
+            </li>
 
 
         </ul>

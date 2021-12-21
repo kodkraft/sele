@@ -4,50 +4,53 @@
 ?>
 @extends('layouts.app')
 @section('content')
-    <div class="flex flex-col">
-
-        <div class="flex flex-row justify-end mt-8 container px-4">
-            <a href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'index'])}}"
-               class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                @lang('category.show-categories')
-            </a>
-        </div>
-
-        <form action="{{action([\App\Http\Controllers\Admin\CategoryController::class,'store'])}}"
-              method="post">
-            @csrf
-            <section class="text-gray-600">
-                <div class="container mx-auto px-5 py-4">
-                    <div class="w-full md:w-1/2 bg-white flex flex-col md:py-8 mt-8 md:mt-0">
-                        <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">New Category</h2>
-                        <p class="leading-relaxed mb-5 text-gray-600">@lang('category.please-fill-following-fields')</p>
-                        <div class="relative mb-4">
-                            <label for="title" class="leading-7 text-sm text-gray-600">@lang('category.title')</label>
-                            <input type="text" id="title" name="title"
-                                   class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                        </div>
-
-                        <div class="relative mb-4">
-                            <label for="parent"
-                                   class="leading-7 text-sm text-gray-600">@lang('category.select-parent')</label>
-                            <select id="parent_id"
-                                    name="parent_id"
-                                    class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out select2">
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->title_with_path }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <button
-                            class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                            @lang('category.save')
-                        </button>
+    <!-- create category form -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Create Category</h3>
                     </div>
+                    <div class="panel-body">
+                        <form action="{{ action([\App\Http\Controllers\Admin\CategoryController::class,'store']) }}"
+                              method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label for="title">@lang('common.title')</label>
+                                <input type="text"
+                                       name="title"
+                                       id="title"
+                                       class="form-control @error('title') is-invalid @enderror"
+                                       value="{{ old('name') }}">
+                                @error('title')
+                                <div class="invalid-feedback">{{$message}}</div>
+                                @enderror
+                            </div>
 
+                            <div class="form-group">
+                                <label for="parent_id">@lang('common.parent')</label>
+                                <select name="parent_id"
+                                        id="parent_id"
+                                        class="form-control @error('parent_id') is-invalid @enderror">
+                                    <option value="">@lang('common.none')</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}"
+                                                {{ old('parent_id') == $category->id ? 'selected' : '' }}>{{ $category->title_with_path }}</option>
+                                    @endforeach
+                                </select>
+                                @error('parent_id')
+                                <div class="invalid-feedback">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group mt-4">
+                                <button type="submit" class="btn btn-primary">@lang('common.create')</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </section>
-        </form>
+            </div>
+        </div>
     </div>
 
 @endsection

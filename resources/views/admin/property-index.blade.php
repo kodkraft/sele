@@ -4,7 +4,12 @@
 ?>
 @extends('layouts.app',['title'=>'Properties'])
 @section('content')
-    <div class="table-responsive">
+    <h2>@lang('common.properties')</h2>
+    <div class="">
+        <a href="{{action([\App\Http\Controllers\Admin\PropertyController::class,'create'])}}" class="btn btn-primary">@lang('common.create')</a>
+    </div>
+
+    <div class="table-responsive mt-4">
         <table class="table table-bordered table-striped">
             <thead>
             <tr>
@@ -29,10 +34,6 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                 <li>
                                     <a class="dropdown-item"
-                                       href="{{action([\App\Http\Controllers\Admin\PropertyController::class,'show'],['property'=>$property->id])}}">@lang('common.show')</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item"
                                        href="{{action([\App\Http\Controllers\Admin\PropertyController::class,'edit'],['property'=>$property->id])}}">@lang('common.edit')</a>
                                 </li>
                                 <li>
@@ -42,6 +43,8 @@
                                         @csrf
                                         @method('DELETE')
                                         <button class="dropdown-item swal-submit"
+                                                data-text="@lang('common.delete_confirm')"
+                                                data-title="@lang('common.are_you_sure')"
                                                 type="submit">@lang('common.delete')</button>
                                     </form>
 
