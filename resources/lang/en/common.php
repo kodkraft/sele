@@ -45,5 +45,6 @@ return [
     'options' => 'Options',
     'parent' => 'Parent',
     'none' => 'None',
+    'details' => 'Details',
 
 ];

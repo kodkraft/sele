@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SavePropertyRequest;
+use App\Models\Category;
 use App\Models\Property;
 use Illuminate\Http\Request;
 
@@ -18,25 +20,24 @@ class PropertyController extends Controller
             ->with('properties', $properties);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        $categories = Category::with('ancestors')->get();
+        return view('admin/property-create')
+            ->with('categories', $categories);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(SavePropertyRequest $request)
     {
-        //
+        $property = new Property();
+        $property->name = $request->name;
+        $property->description = $request->description;
+        $property->category_id = $request->category_id;
+        $property->values = preg_split('/\r\n|\r|\n/', $request->values);
+        $property->save();
+        return redirect()->back()->with('success', 'Property created successfully');
     }
 
     /**

@@ -7,38 +7,28 @@
 
 
 
-    <a href="{{action([\App\Http\Controllers\Admin\ProductController::class,'index'])}}"
+    <a href="{{action([\App\Http\Controllers\Admin\PropertyController::class,'index'])}}"
        class="btn btn-success">
-        @lang('common.show-products')
+        @lang('common.show-properties')
     </a>
 
 
     <div class="col-md-12 col-lg-6">
-        <form class="row g-3" action="{{action([\App\Http\Controllers\Admin\ProductController::class,'store'])}}"
+        <form class="row g-3" action="{{action([\App\Http\Controllers\Admin\PropertyController::class,'store'])}}"
               method="post">
             @csrf
-            <div class="col-md-6">
-                <label for="title" class="form-label">@lang('common.title')</label>
+            <div class="col-md-12">
+                <label for="name" class="form-label">@lang('common.name')</label>
                 <input type="text"
-                       id="title"
-                       name="title"
-                       class="form-control @error('title') is-invalid @enderror"
-                       value="{{old('title')}}">
-                @error('title')
+                       id="name"
+                       name="name"
+                       class="form-control @error('name') is-invalid @enderror"
+                       value="{{old('name')}}">
+                @error('name')
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror
             </div>
-            <div class="col-md-6">
-                <label for="price" class="form-label">@lang('common.price')</label>
-                <input type="number"
-                       class="form-control @error('price') is-invalid @enderror"
-                       id="price"
-                       name="price"
-                       value="{{old('price')}}">
-                @error('price')
-                <div class="invalid-feedback">{{$message}}</div>
-                @enderror
-            </div>
+
             <div class="col-12">
                 <label for="description" class="form-label">@lang('common.description')</label>
                 <textarea type="text"
@@ -46,6 +36,20 @@
                           id="description"
                           name="description"></textarea>
                 @error('description')
+                <div class="invalid-feedback">{{$message}}</div>
+                @enderror
+            </div>
+            <div class="col-12">
+                <label for="values" class="form-label">@lang('common.values')</label>
+                <textarea type="text"
+                          class="form-control @error('values') is-invalid @enderror"
+                          id="values"
+                          name="values"></textarea>
+
+                <small class="form-text text-muted">
+                    @lang('common.each-line-for-one-value')
+                    </small>
+                @error('values')
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror
             </div>

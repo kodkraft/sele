@@ -6,7 +6,8 @@
 @section('content')
     <h2>@lang('common.properties')</h2>
     <div class="">
-        <a href="{{action([\App\Http\Controllers\Admin\PropertyController::class,'create'])}}" class="btn btn-primary">@lang('common.create')</a>
+        <a href="{{action([\App\Http\Controllers\Admin\PropertyController::class,'create'])}}"
+           class="btn btn-success">@lang('common.create')</a>
     </div>
 
     <div class="table-responsive mt-4">
