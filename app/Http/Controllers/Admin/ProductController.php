@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SaveProductRequest;
 use App\Models\Category;
+use App\Models\OrderStatus;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -63,7 +64,10 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        //
+        $orderStatuses = OrderStatus::all();
+        return view('admin/product-show')
+            ->with('orderStatuses', $orderStatuses)
+            ->with('product', $product);
     }
 
 

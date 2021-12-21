@@ -31,6 +31,9 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                 <li><h6 class="dropdown-header">@lang('common.product')</h6></li>
                                 <li>
+                                    <a class="dropdown-item" href="{{action([\App\Http\Controllers\Admin\ProductController::class,'show'],['product'=>$product->id])}}">@lang('common.details')</a>
+                                </li>
+                                <li>
                                     <a class="dropdown-item" href="{{action([\App\Http\Controllers\Admin\Product\ProductImageController::class,'index'],['product'=>$product->id])}}">@lang('common.images')</a>
                                 </li>
                                 <li>

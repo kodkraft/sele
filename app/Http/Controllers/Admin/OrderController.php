@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
@@ -34,6 +35,7 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
+
         return view('admin/order-show')
             ->with('order', $order);
     }

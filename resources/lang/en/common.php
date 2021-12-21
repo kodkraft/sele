@@ -30,4 +30,13 @@ return [
     'show-products' => 'Show Products',
     'update_product' => 'Update Product',
     'please-fill-following-fields' => 'Please fill following fields',
+    'id' => 'ID',
+    'user' => 'User',
+    'created_at' => 'Created At',
+    'amount' => 'Amount',
+    'customer_name' => 'Customer Name',
+    'customer_email' => 'Customer Email',
+    'customer_phone' => 'Customer Phone',
+    'customer_address' => 'Customer Address',
+
 ];
