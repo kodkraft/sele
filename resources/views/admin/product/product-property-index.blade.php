@@ -64,9 +64,9 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Action</th>
-                <th>Property</th>
-                <th>Value</th>
+                <th>@lang('common.actions')</th>
+                <th>@lang('common.property')</th>
+                <th>@lang('common.value')</th>
 
             </tr>
             </thead>
