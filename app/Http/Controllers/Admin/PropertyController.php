@@ -51,37 +51,31 @@ class PropertyController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Property $property
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function edit(Property $property)
     {
-        //
+        $categories = Category::with('ancestors')->get();
+        return view('admin/property-edit')
+            ->with('property', $property)
+            ->with('categories', $categories);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Property $property
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Property $property)
+
+    public function update(SavePropertyRequest $request, Property $property)
     {
-        //
+        $property->name = $request->name;
+        $property->description = $request->description;
+        $property->category_id = $request->category_id;
+        $property->values = preg_split('/\r\n|\r|\n/', $request->values);
+        $property->save();
+        return redirect()->back()->with('success', 'Property updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\Property $property
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Property $property)
     {
-        //
+        $property->delete();
+        return redirect()->back()->with('success', 'Property deleted successfully');
     }
 }
