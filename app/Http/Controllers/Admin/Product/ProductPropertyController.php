@@ -25,7 +25,9 @@ class ProductPropertyController extends Controller
     {
         /** @var Property $property */
         $property = Property::find($request->property_id);
-        $product->properties()->attach($property->id, ['value' => $request->value]);
+        $product
+            ->properties()
+            ->attach($property->id, ['value' => $request->value]);
         Log::info($message = 'Property ' . $property->name . ' added to ' . $product->title);
         return redirect()->back()->with('success', $message);
     }
