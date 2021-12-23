@@ -27,9 +27,10 @@ class Category extends Model
     use NodeTrait;
     use HasFactory;
 
-//    use Searchable{
-//        NodeTrait::usesSoftDelete insteadof Searchable;
-//    }
+    use Searchable {
+        NodeTrait::usesSoftDelete insteadof Searchable;
+    }
+
     protected $guarded = ['id'];
 
 
@@ -74,6 +75,13 @@ class Category extends Model
     public function getNameAttribute()
     {
         return $this->title;
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'title' => $this->title,
+        ];
     }
 
 }

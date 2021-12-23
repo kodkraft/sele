@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Laravel\Scout\Searchable;
 
 /**
  * @property mixed $id
  * @property mixed $name
- * @property array $values
+ * @property Collection $values
  * @property mixed $description
  * @property mixed $category_id
  * @property mixed $created_at
@@ -20,6 +21,7 @@ use Illuminate\Support\Collection;
 class Property extends Model
 {
     use HasFactory;
+    use Searchable;
 
     protected $casts = ['values' => 'collection'];
     protected $guarded = ['id'];
@@ -33,5 +35,14 @@ class Property extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'name' => $this->name,
+            'description' => $this->description,
+            'values' => $this->values,
+        ];
     }
 }

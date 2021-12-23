@@ -27,15 +27,26 @@ cd /var/www/sele/
 ```bash
 sudo update-alternatives --set php /usr/bin/php8.0
 ```
+##### Install composer
 ```bash
 composer install
 ```
 ```bash
 cp .env.testing ./.env
 ```
-
-
-
+##### Run migrations
+```bash
+php artisan migrate
+```
+##### Run seeding
+```bash
+php artisan db:seed
+```
+##### Create Scout index
+```bash
+php artisan scout:mysql-index --verbose
+```
+### For Local Development
 ##### Create Symbolic Link
 ```bash
 ln -s /var/www/sele/public/ /var/www/html/sele
@@ -44,7 +55,7 @@ ln -s /var/www/sele/public/ /var/www/html/sele
 ```bash 
 sudo vim /etc/apache2/sites-available/sele.conf
 ```
-and this configuration to file
+and add this configuration to file
 ```xml
 <VirtualHost *:80>
 	
@@ -77,6 +88,7 @@ systemctl reload apache2
 ```bash
 sudo vim /etc/hosts
 ```
+
 
 ### Login
 ```

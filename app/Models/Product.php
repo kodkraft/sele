@@ -23,10 +23,10 @@ use Laravel\Scout\Searchable;
 class Product extends Model
 {
     use HasFactory;
-    //use Searchable;
+    use Searchable;
 
     protected $guarded = ['id'];
-    protected $appends=['text'];
+    protected $appends = ['text'];
 
     public function category()
     {
@@ -36,7 +36,7 @@ class Product extends Model
     public function orders()
     {
         return $this->belongsToMany(Order::class)
-            ->withPivot(['price','amount']);
+            ->withPivot(['price', 'amount']);
     }
 
     public function properties()
@@ -54,10 +54,6 @@ class Product extends Model
         return $this->images->sortBy('id')->last();
     }
 
-    public function makeAllSearchableUsing($query)
-    {
-        return $query->with('category');
-    }
 
     public function getTextAttribute()
     {
@@ -71,6 +67,13 @@ class Product extends Model
             return substr($this->description, 0, 100) . '...';
         }
         return $this->description;
+    }
 
+    public function toSearchableArray(): array
+    {
+        return [
+            'title' => $this->title,
+            'description' => $this->description,
+        ];
     }
 }
