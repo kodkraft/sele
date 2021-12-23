@@ -23,7 +23,7 @@ class PropertyFactory extends Factory
     {
         return [
             'name' => $this->faker->bothify('prop###'),
-            'values' => json_encode([$this->faker->word, $this->faker->word]),
+            'values' => [$this->faker->word, $this->faker->word],
             'description' => $this->faker->paragraph
 
         ];
