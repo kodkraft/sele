@@ -15,12 +15,10 @@ class CreateAttributeProduct extends Migration
     {
         Schema::create('product_property', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('property_id')->constrained();
-            $table->foreignId('product_id')->constrained();
+            $table->foreignId('property_id')->constrained()->onDelete('cascade');
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->string('value')->nullable();
-
             $table->unique(['property_id', 'product_id']);
-
             $table->timestamps();
         });
     }
