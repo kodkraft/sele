@@ -54,10 +54,9 @@
                     <td>{{$order->id}}</td>
                     <td>{{$order->customer->user->name}}</td>
                     <td>{{$order->orderStatus->name}}</td>
-                    <td>{{$order->products->groupBy('id')->map(function ($group){
-
-                            return $group->sum('pivot.amount').' adet '.$group->first()->title;
-                        })->join(', ')}}
+                    <td>{!! $order->products->groupBy('id')->map(function ($group){
+                            return $group->sum('pivot.amount').' adet '.'<a href="'.action([\App\Http\Controllers\Admin\ProductController::class,'show'],['product'=>$group->first()->id]).'">'.$group->first()->title.'</a>';
+                        })->join(', ')!!}
                     </td>
                     <td>{{$order->order_total}}</td>
                 </tr>
