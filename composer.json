@@ -16,7 +16,8 @@
         "laravel/scout": "^9.3",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
-        "meilisearch/meilisearch-php": "^0.19.2"
+        "meilisearch/meilisearch-php": "^0.19.2",
+        "yab/laravel-scout-mysql-driver": "^5.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
