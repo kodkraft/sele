@@ -50,7 +50,6 @@ class Customer extends Model
             'firstname' => $this->firstname,
             'lastname' => $this->lastname,
             'phone' => $this->phone,
-            'email' => $this->user->email,
         ];
     }
 }
