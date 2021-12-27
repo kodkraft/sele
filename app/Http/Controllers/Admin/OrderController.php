@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderStatus;
 use Illuminate\Http\Request;
@@ -12,12 +13,19 @@ use Illuminate\Support\Facades\Log;
 class OrderController extends Controller
 {
 
-    public function index()
+    public function index(Customer $customer = null)
     {
-        /** @var Order[]|Collection $orders */
-        $orders = Order::limit(100)->latest()->get();
-        return view('admin/order-index')
-            ->with('orders', $orders);
+        //if there is no customer get all orders if there is a customer get all orders for that customer
+        if ($customer) {
+            $orders = $customer->orders;
+        } else {
+            $orders = Order::limit(100)->latest()->get();
+        }
+
+
+        //return view if not ajax request
+        return request()->ajax() ? response()->json($orders) :
+            view('admin/order-index')->with('orders', $orders);
     }
 
 
@@ -35,7 +43,6 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
-
         return view('admin/order-show')
             ->with('order', $order);
     }

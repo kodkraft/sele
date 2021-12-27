@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{action([\App\Http\Controllers\Admin\OrderController::class,'index'])}}">
+                <a class="nav-link" href="{{route('admin.order.index')}}">
                     <span ></span>
                     Orders
                 </a>
@@ -30,6 +30,12 @@
                 <a class="nav-link" href="{{action([\App\Http\Controllers\Admin\PropertyController::class,'index'])}}">
                     <span ></span>
                     @lang('common.properties')
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{action([\App\Http\Controllers\Admin\CustomerController::class,'index'])}}">
+                    <span ></span>
+                    @lang('common.customers')
                 </a>
             </li>
 

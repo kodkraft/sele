@@ -46,5 +46,9 @@ return [
     'parent' => 'Parent',
     'none' => 'None',
     'details' => 'Details',
+    'email' => 'Email',
+    'phone' => 'Phone',
+    'address' => 'Address',
+    'total_orders' => 'Total Orders',
 
 ];

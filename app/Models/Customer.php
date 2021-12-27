@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Laravel\Scout\Searchable;
 
 /**
  * @property User $user
@@ -21,6 +22,7 @@ use Illuminate\Support\Collection;
 class Customer extends Model
 {
     use HasFactory;
+    use Searchable;
 
     public function user()
     {
@@ -40,5 +42,15 @@ class Customer extends Model
     public function getNameAttribute()
     {
         return $this->firstname . ' ' . $this->lastname;
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'firstname' => $this->firstname,
+            'lastname' => $this->lastname,
+            'phone' => $this->phone,
+            'email' => $this->user->email,
+        ];
     }
 }

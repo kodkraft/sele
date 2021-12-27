@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Category\CategoryImageController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\FullTextSearchController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\Product\ProductImageController;
@@ -67,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('admin/settings/{setting}', [SettingController::class, 'update']);
 
     //orders
-    Route::get('admin/orders', [OrderController::class, 'index']);
+    Route::get('admin/orders', [OrderController::class, 'index'])->name('admin.order.index');
     Route::get('admin/orders/{order}', [OrderController::class, 'show']);
     Route::get('admin/orders/{order}/edit', [OrderController::class, 'edit']);
     Route::post('admin/orders/{order}', [OrderController::class, 'destroy']);
@@ -83,6 +84,21 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/properties/{property}/edit', [PropertyController::class, 'edit']);
     Route::patch('admin/properties/{property}', [PropertyController::class, 'update']);
     Route::delete('admin/properties/{property}', [PropertyController::class, 'destroy']);
+
+    //customers
+
+    Route::get('admin/customers', [CustomerController::class, 'index']);
+    Route::get('admin/customers/{customer}', [CustomerController::class, 'show']);
+    Route::get('admin/customers/{customer}/edit', [CustomerController::class, 'edit']);
+    Route::post('admin/customers/{customer}', [CustomerController::class, 'destroy']);
+    Route::patch('admin/customers/{customer}', [CustomerController::class, 'update']);
+
+    Route::get('admin/customers/{customer}/orders', [OrderController::class, 'index'])
+        ->name('admin.customer.order.index');
+
+
+
+
 
 
 
