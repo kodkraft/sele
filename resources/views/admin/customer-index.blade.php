@@ -45,15 +45,13 @@
                                         <button class="dropdown-item swal-submit"
                                                 type="submit">@lang('common.delete')</button>
                                     </form>
-
                                 </li>
-
                             </ul>
 
                         </div>
                     </td>
                     <td>{{$customer->id}}</td>
-                    <td>{{$customer->user->name}}</td>
+                    <td>{{$customer->name}}</td>
                     <td>{{$customer->user->email}}</td>
                     <td>{{$customer->phone}}</td>
                     <td><a href="{{route('admin.customer.order.index',['customer'=>$customer->id])}}">{{$customer->orders->count()}}</a></td>
