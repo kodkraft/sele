@@ -18,6 +18,7 @@ use Laravel\Scout\Searchable;
  * @property mixed $created_at
  * @property mixed $updated_at
  * @property Order[]|Collection $orders
+ * @property string $name
  */
 class Customer extends Model
 {
