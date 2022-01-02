@@ -69,7 +69,7 @@ Route::middleware(['auth'])->group(function () {
 
     //orders
     Route::get('admin/orders', [OrderController::class, 'index'])->name('admin.order.index');
-    Route::get('admin/orders/{order}', [OrderController::class, 'show']);
+    Route::get('admin/orders/{order}', [OrderController::class, 'show'])->name('admin.order.show');
     Route::get('admin/orders/{order}/edit', [OrderController::class, 'edit']);
     Route::post('admin/orders/{order}', [OrderController::class, 'destroy']);
 
