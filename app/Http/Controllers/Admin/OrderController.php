@@ -17,9 +17,9 @@ class OrderController extends Controller
     {
         //if there is no customer get all orders if there is a customer get all orders for that customer
         if ($customer) {
-            $orders = $customer->orders;
+            $orders = $customer->orders()->with('orderStatus')->orderBy('id','desc')->get();
         } else {
-            $orders = Order::limit(100)->latest()->get();
+            $orders = Order::limit(100)->latest()->orderBy('id','desc')->get();
         }
 
         //return view if not ajax request
