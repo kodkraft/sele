@@ -4,7 +4,50 @@
 ?>
 @extends('layouts.app',['title'=>'Orders'])
 @section('content')
-    <div class="table-responsive">
+    <h2>@lang('common.orders')</h2>
+    <hr>
+    <!-- show brief info about orders -->
+    <!--total orders-->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>@lang('common.total_orders')</h3>
+                </div>
+                <div class="card-body">
+                    <h1>{{$orders->count()}}</h1>
+                </div>
+            </div>
+        </div>
+        <!--total orders-->
+        <!--total orders sum-->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>@lang('common.total_orders_value')</h3>
+                </div>
+                <div class="card-body">
+                    <h1>{{$orders->sum('price')}}</h1>
+                </div>
+            </div>
+        </div>
+        <!--total orders-->
+        <!--total orders-->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>@lang('common.total_orders_value_paid')</h3>
+                </div>
+                <div class="card-body">
+                    <h1>{{$orders->sum('total_paid')}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!--total orders-->
+
+    <div class="table-responsive mt-4">
         <table class="table table-bordered table-striped">
             <thead>
             <tr>

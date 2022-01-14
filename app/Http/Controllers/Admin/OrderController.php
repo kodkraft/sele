@@ -22,10 +22,10 @@ class OrderController extends Controller
             $orders = Order::limit(100)->latest()->get();
         }
 
-
         //return view if not ajax request
         return request()->ajax() ? response()->json($orders) :
-            view('admin/order-index')->with('orders', $orders);
+            view('admin/order-index')
+                ->with('orders', $orders);
     }
 
 

@@ -78,4 +78,13 @@ class Order extends Model
             'billing_address' => $this->billing_address,
         ];
     }
+
+    //scope this weeks orders
+    public function scopeThisWeeksOrders($query)
+    {
+        return $query->whereBetween('created_at', [
+            now()->startOfWeek(),
+            now()->endOfWeek(),
+        ]);
+    }
 }
