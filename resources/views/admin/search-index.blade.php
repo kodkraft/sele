@@ -28,6 +28,14 @@
             @include('admin/customer/customer-card',['customer'=>$customer])
         @endforeach
     </div>
+    <!--orders-->
+    <hr>
+    <h3>@lang('common.orders') ({{$orders->count()}})</h3>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 g-4">
+        @foreach($orders as $order)
+            @include('admin/order/order-card',['order'=>$order])
+        @endforeach
+    </div>
 
 @endsection
 

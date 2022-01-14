@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SearchRequest;
 use App\Models\Category;
 use App\Models\Customer;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -28,12 +29,16 @@ class FullTextSearchController extends Controller
             $query->where('email', 'like', '%' . $request->search . '%');
         })->paginate(100);
 
+        $orders = Order::search($request->search)
+            ->paginate(100);
+
         $customers = $customers->merge($customers2);
 
 
 
         return view('admin/search-index')
             ->with('products', $products)
+            ->with('orders', $orders)
             ->with('categories', $categories)
             ->with('customers', $customers);
     }
