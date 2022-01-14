@@ -50,5 +50,7 @@ return [
     'phone' => 'Phone',
     'address' => 'Address',
     'total_orders' => 'Total Orders',
+    'total_orders_value'=> 'Total Value',
+    'last_orders'=> 'Last :order_count Orders',
 
 ];
