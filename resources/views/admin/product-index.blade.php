@@ -22,7 +22,3 @@
     </div>
 @endsection
 
-@push('js')
-    @livewireScripts
-@endpush
-
