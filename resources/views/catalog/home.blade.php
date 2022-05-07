@@ -2,7 +2,7 @@
 /**@var \App\Models\Product[] $products */
 
 ?>
-@extends('layouts.customer.app')
+@extends('layouts.catalog.app')
 @section('content')
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">

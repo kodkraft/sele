@@ -25,7 +25,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/categories', 'App\Http\Controllers\Customer\CategoryController@index')->name('customer-category.index');
+
+//product
+Route::get('/products/{product}', [App\Http\Controllers\Catalog\ProductController::class, 'show']);
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('admin/categories', [CategoryController::class, 'index'])->name('category.index');
