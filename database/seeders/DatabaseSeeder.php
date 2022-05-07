@@ -11,6 +11,7 @@ use App\Models\Order;
 use App\Models\OrderStatus;
 use App\Models\Product;
 use App\Models\Property;
+use App\Models\Translation;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -51,11 +52,15 @@ class DatabaseSeeder extends Seeder
                 return $categories->random()->id;
             }
         ])->hasAttached(Property::factory()->count(2), ['value' => 'some value'])
-            ->has(Image::factory())->create();
+            ->has(Image::factory())
+            ->has(Translation::factory(['locale' => 'en']))
+            ->has(Translation::factory(['locale' => 'tr']))
+
+            ->create();
 
         $customers = Customer::factory(10, [
             'user_id' => function () use ($users) {
-                return $users->random()->id;
+                return $users->pop()->id;
             }
         ])
             ->has(Addresses::factory()->count(2))

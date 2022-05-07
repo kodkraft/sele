@@ -76,4 +76,8 @@ class Product extends Model
             'description' => $this->description,
         ];
     }
+    public function translations()
+    {
+        return $this->morphMany(Translation::class, 'translatable');
+    }
 }
