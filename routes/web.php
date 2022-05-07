@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\Product\ProductPropertyController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Customer\HomeController;
+use App\Http\Controllers\Catalog\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
